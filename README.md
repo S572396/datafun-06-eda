@@ -4,7 +4,7 @@
 
 This prjoect will use a Jupyter notebook to further analyze data for the Diamond dataset to produce visualizations and answer data related questions.
 
-## The Dataset fo Diamonds.csv 
+## The Dataset for Diamonds.csv 
 
 This large Dataset has various columns of: carat, cut, color, clarity, depth as percentage, table-width of top diamond, price, x-length in mm, y-width, z-depth in mm for 50,000 diamonds.
 
