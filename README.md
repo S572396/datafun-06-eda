@@ -60,7 +60,7 @@ jupyter extention added in to terminal
 
 sandraruiz_eda.ipynb jupyter notebook updated for overview
 
-diamonds.csv dataset added in from seaborn :
+## Diamonds.csv dataset added in from seaborn :
 
 '''
 import seaborn as sns
@@ -73,7 +73,42 @@ print(df.head())
 
 '''
 
-# Dataset Diamonds.csv loaded sucessful, see sample:
+# Dataset Diamonds.csv loaded sucessful, sample:
 
  carat      cut color clarity  depth  table  price     x     y     z
+
+
 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+
+## Data Inspection
+
+'''
+print(df.head(10))
+print(df.shape)
+print(df.dtypes)
+'''
+
+## Statistics Summary
+'''
+print (df.describe())
+
+'''
+## Avg of diamond carats
+'''
+# Calculate the average of the 'carat' column
+average_carat = df['carat'].mean()
+
+# Print the result
+print("Average Carat:", average_carat)
+'''
+## Create histogram of column of 'carat'
+
+'''
+plt.figure(figsize=(10, 6))
+sns.histplot(df['carat'], bins=30, kde=False, color='blue', edgecolor='black')
+
+plt.title('Histogram of Carat')
+plt.xlabel('Carat')
+plt.ylabel('Frequency')
+plt.show
+'''
