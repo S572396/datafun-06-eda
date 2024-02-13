@@ -54,3 +54,26 @@ freeze dependencies with:
 '''
 python -m pip freeze > requirements.txt
 '''
+## Project Setup Part II Jupyter Notebook
+
+jupyter extention added in to terminal
+
+sandraruiz_eda.ipynb jupyter notebook updated for overview
+
+diamonds.csv dataset added in from seaborn :
+
+'''
+import seaborn as sns
+
+# Load the diamonds dataset into a pandas DataFrame
+df = sns.load_dataset('diamonds')
+
+# Inspect the first rows of the DataFrame
+print(df.head())
+
+'''
+
+# Dataset Diamonds.csv loaded sucessful, see sample:
+
+ carat      cut color clarity  depth  table  price     x     y     z
+0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
