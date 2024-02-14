@@ -112,3 +112,77 @@ plt.xlabel('Carat')
 plt.ylabel('Frequency')
 plt.show
 '''
+### markdown answer added
+
+## how many are 'Ideal' diamonds?
+
+'''
+import seaborn as sns
+df = sns.load_dataset('diamonds')
+cut_counts = df['cut'].value_counts()
+print("Number of diamonds labeled 'Ideal':", cut_counts['Ideal'])
+
+'''
+### mardown answer added
+
+## how many meet criteria of 4 C's: cut, color, clairity,and carat?
+'''
+# Filter the DataFrame based on the specified conditions
+
+filtered_df = df[(df['cut'] == 'Ideal') & (df['color'] == 'D') & (df['clarity'] == 'IF') & (df['carat'] > 0.8)]
+
+count_best_values = len(filtered_df)
+print("Number of diamonds meeting the best values:", count_best_values)
+
+'''
+### markdown answer added
+
+## What is the correlation between diamond quality and price?
+
+'''
+# Sort the DataFrame by 'price' column in descending order
+sorted_df = df.sort_values(by='price', ascending=False)
+
+# Display all rows of the sorted DataFrame
+print(sorted_df)
+
+'''
+### Price and Carat Scatter Plot created to further compare information
+
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Sort the DataFrame by 'price' column in descending order
+sorted_df = df.sort_values(by='price', ascending=False)
+
+# Create a scatter plot
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='carat', y='price', data=sorted_df)
+
+plt.xlabel('Carat')
+plt.ylabel('Price')
+plt.title('Scatter Plot of Diamonds - Price vs. Carat')
+
+'''
+### markdown findings added in
+
+## other factors that affect diamond prices of cut, color, clarity in additon to carat.
+
+Histograms Created
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Create a histogram for cut, color, clarity
+
+
+
+
+
+# Adjust layout and display the plot
+plt.tight_layout()
+plt.show()
+
+'''
+
