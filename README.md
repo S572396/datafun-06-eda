@@ -121,7 +121,7 @@ plt.xlabel('Carat')
 plt.ylabel('Frequency')
 plt.show
 '''
-### markdown answer added
+### markdown answer added in notebook
 
 ## how many are 'Ideal' diamonds?
 
@@ -144,7 +144,7 @@ ideal_count = df['cut'].value_counts()['Ideal']
 print("Number of diamonds labeled 'Ideal':", ideal_count)
 
 '''
-### mardown answer added
+### mardown answer added in notebook
 
 ## Data Transformation and Feature Engineering
 
@@ -162,7 +162,7 @@ print(df.columns)
 print("\nFirst 4 rows of the DataFrame:")
 print(df.head(4))
 '''
-### markdown insight added of sucessful rename
+### markdown insight added of sucessful rename in notebook
 
     2.Add one new column named best_value:
     '''
@@ -189,7 +189,7 @@ print(best_value_rows)
 total_best_value_count = df['best_value'].sum()
 '''
 
-### markdown insight noted of sucessful creation
+### markdown insight noted of sucessful creation in notebook
 
 
 ## how many meet criteria of 4 C's: cut, color, clairity,and carat?
@@ -202,7 +202,7 @@ count_best_values = len(filtered_df)
 print("Number of diamonds meeting the best values:", count_best_values)
 
 '''
-### markdown answer added
+### markdown answer added in notebook
 
 ## What is the correlation between diamond quality and price?
 
@@ -214,7 +214,7 @@ sorted_df = df.sort_values(by='price', ascending=False)
 print(sorted_df)
 
 '''
-### Markdown observation added
+### Markdown observation added in notebook
 
 ### Price and Carat Scatter Plot created to further compare information
 
@@ -234,7 +234,7 @@ plt.title('Scatter Plot of Diamonds - Price vs. Carat')
 
 plt.show()
 '''
-### markdown findings added in
+### markdown findings added in notebook
 
 ## other factors that affect diamond prices of cut, color, clarity in additon to carat.
 
@@ -249,7 +249,7 @@ sns.pairplot(df, vars=['carat', 'price'], hue='cut', markers='o', palette='virid
 
 plt.show()
 '''
-### mardown insights added in
+### mardown insights added in notebook
 
 ## Histograms Created for Color and Clarity in relation to Price
 '''
@@ -272,3 +272,5 @@ plt.show()
 
 '''
 ### markdown insights added in
+
+## Conclusion explained in notebook
