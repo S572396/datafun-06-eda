@@ -15,14 +15,7 @@ Sample of the data: first ten lines:
 "carat","cut","color","clarity","depth","table","price","x","y","z"
 0.23,"Ideal","E","SI2",61.5,55,326,3.95,3.98,2.43
 0.21,"Premium","E","SI1",59.8,61,326,3.89,3.84,2.31
-0.23,"Good","E","VS1",56.9,65,327,4.05,4.07,2.31
-0.29,"Premium","I","VS2",62.4,58,334,4.2,4.23,2.63
-0.31,"Good","J","SI2",63.3,58,335,4.34,4.35,2.75
-0.24,"Very Good","J","VVS2",62.8,57,336,3.94,3.96,2.48
-0.24,"Very Good","I","VVS1",62.3,57,336,3.95,3.98,2.47
-0.26,"Very Good","H","SI1",61.9,55,337,4.07,4.11,2.53
-0.22,"Fair","E","VS2",65.1,61,337,3.87,3.78,2.49
-0.23,"Very Good","H","VS1",59.4,61,338,4,4.05,2.39
+
 
 ## Project Setup
 
@@ -36,12 +29,10 @@ create virtual environment with
 '''
 . venv
 '''
-
 active virtual environoment with:
 '''
 .venv\Scripts\active
 '''
-
 install packages with:
 
 '''
@@ -65,15 +56,15 @@ sandraruiz_eda.ipynb jupyter notebook updated for overview
 '''
 import seaborn as sns
 
-# Load the diamonds dataset into a pandas DataFrame
+## Load the diamonds dataset into a pandas DataFrame
 df = sns.load_dataset('diamonds')
 
-# Inspect the first rows of the DataFrame
+## Inspect the first rows of the DataFrame
 print(df.head())
 
 '''
 
-# Dataset Diamonds.csv loaded sucessful, sample:
+### Dataset Diamonds.csv loaded sucessful, sample:
 
  carat      cut color clarity  depth  table  price     x     y     z
 
@@ -87,18 +78,29 @@ print(df.head(10))
 print(df.shape)
 print(df.dtypes)
 '''
+## Helpful information about Diamdonds: The 4 C's of Diamonds 
+#### Arranged from lowest to highest category
+
+* Cut-Poor Cut, Fair Cut, Good Cut, Very Good Cut, Excellent Cut, Ideal Cut
+* Color- Faint(KLM), Near Colorless(G,H,I), Colorless(D,E,F)
+* Clarity-Included(11,12,13), Slightly Inclued(S11,S12,S13), Very Slightly Inclued(VS1,VS2), IF(Internal Flawless)
+* Carat-Weight of Diamond can range from 0 to whole nummbers, often decimals used, example 0.75 carat, 1.0 carat, 2.5 carat etc.
+ 
+** Retrived from: [Grown Brilliance](https://www.grownbrilliance.com/education-guide/learn-about-the-4cs)
+
+
 
 ## Statistics Summary
 '''
 print (df.describe())
 
 '''
-## Avg of diamond carats
+## Avg of diamond carat weight
 '''
-# Calculate the average of the 'carat' column
+## Calculate the average of the 'carat' column
 average_carat = df['carat'].mean()
 
-# Print the result
+## Print the result
 print("Average Carat:", average_carat)
 '''
 ## Create histogram of column of 'carat'
@@ -127,7 +129,7 @@ print("Number of diamonds labeled 'Ideal':", cut_counts['Ideal'])
 
 ## how many meet criteria of 4 C's: cut, color, clairity,and carat?
 '''
-# Filter the DataFrame based on the specified conditions
+ Filter the DataFrame based on the specified conditions
 
 filtered_df = df[(df['cut'] == 'Ideal') & (df['color'] == 'D') & (df['clarity'] == 'IF') & (df['carat'] > 0.8)]
 
@@ -140,23 +142,24 @@ print("Number of diamonds meeting the best values:", count_best_values)
 ## What is the correlation between diamond quality and price?
 
 '''
-# Sort the DataFrame by 'price' column in descending order
+## Sort the DataFrame by 'price' column in descending order
 sorted_df = df.sort_values(by='price', ascending=False)
 
-# Display all rows of the sorted DataFrame
+## Display all rows of the sorted DataFrame
 print(sorted_df)
 
 '''
+### Markdown observation added
+
 ### Price and Carat Scatter Plot created to further compare information
 
 '''
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Sort the DataFrame by 'price' column in descending order
 sorted_df = df.sort_values(by='price', ascending=False)
 
-# Create a scatter plot
+## Create a scatter plot
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x='carat', y='price', data=sorted_df)
 
@@ -164,25 +167,43 @@ plt.xlabel('Carat')
 plt.ylabel('Price')
 plt.title('Scatter Plot of Diamonds - Price vs. Carat')
 
+plt.show()
 '''
 ### markdown findings added in
 
 ## other factors that affect diamond prices of cut, color, clarity in additon to carat.
 
-Histograms Created
+Scatter Plot Matrix for cut, carat in relation to price
+
 '''
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Create a histogram for cut, color, clarity
+# Create a scatter plot matrix
+sns.pairplot(df, vars=['carat', 'price'], hue='cut', markers='o', palette='viridis')
 
+plt.show()
+'''
+### mardown insights added in
 
+## Histograms Created for Color and Clarity in relation to Price
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = sns.load_dataset('diamonds')
 
+plt.figure(figsize=(8, 16))
 
+plt.subplot(4, 1, 2)
+sns.histplot(x='price', data=df, hue='color', multiple='stack', palette='viridis', bins=30)
+plt.title('Diamond Price Histogram by Color')
 
-# Adjust layout and display the plot
+plt.subplot(4, 1, 3)
+sns.histplot(x='price', data=df, hue='clarity', multiple='stack', palette='viridis', bins=30)
+plt.title('Diamond Price Histogram by Clarity')
+
 plt.tight_layout()
 plt.show()
 
 '''
-
+### markdown insights added in
