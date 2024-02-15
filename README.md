@@ -10,11 +10,18 @@ This large Dataset has various columns of: carat, cut, color, clarity, depth as 
 
 https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv  
 
-Sample of the data: first ten lines:
+Sample of the data: first few lines:
 
 "carat","cut","color","clarity","depth","table","price","x","y","z"
 0.23,"Ideal","E","SI2",61.5,55,326,3.95,3.98,2.43
 0.21,"Premium","E","SI1",59.8,61,326,3.89,3.84,2.31
+
+## Dependencies Implemented:
+'''
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+'''
 
 
 ## Project Setup
@@ -120,12 +127,70 @@ plt.show
 
 '''
 import seaborn as sns
+import matplotlib.pyplot as plt
 df = sns.load_dataset('diamonds')
-cut_counts = df['cut'].value_counts()
-print("Number of diamonds labeled 'Ideal':", cut_counts['Ideal'])
+
+## Create a count plot for the 'cut' column
+plt.figure(figsize=(8, 6))
+sns.countplot(x='cut', data=df, palette='viridis')  # You can choose a different color palette if desired
+
+plt.title('Count Plot of Diamond Cuts')
+plt.xlabel('Cut')
+plt.ylabel('Count')
+
+plt.show()
+
+ideal_count = df['cut'].value_counts()['Ideal']
+print("Number of diamonds labeled 'Ideal':", ideal_count)
 
 '''
 ### mardown answer added
+
+## Data Transformation and Feature Engineering
+
+    1.Rename one column:
+    '''
+import seaborn as sns
+
+df = sns.load_dataset('diamonds')
+
+df = df.rename(columns={'x': 'length', 'y': 'width', 'z': 'depth'})
+
+print("Column names after renaming:")
+print(df.columns)
+
+print("\nFirst 4 rows of the DataFrame:")
+print(df.head(4))
+'''
+### markdown insight added of sucessful rename
+
+    2.Add one new column named best_value:
+    '''
+    import seaborn as sns
+
+df = sns.load_dataset('diamonds')
+
+### Create a new column 'best_value' based on specified conditions
+conditions = (
+    (df['price'] < 5000) &
+    (df['color'].isin(['D', 'E', 'F'])) &
+    (df['cut'].isin(['Ideal', 'Premium'])) &
+    (df['clarity'].isin(['VS1', 'VS2', 'IF']))
+)
+df['best_value'] = conditions.astype(int)
+
+best_value_rows = df[df['best_value'] == 1]
+
+### Display the DataFrame with 'best_value' equal to 1
+print("Rows with 'best_value' equal to 1:")
+print(best_value_rows)
+
+### Count the total number of rows that meet the 'best_value' specification
+total_best_value_count = df['best_value'].sum()
+'''
+
+### markdown insight noted of sucessful creation
+
 
 ## how many meet criteria of 4 C's: cut, color, clairity,and carat?
 '''
