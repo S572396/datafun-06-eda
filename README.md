@@ -179,7 +179,7 @@ Scatter Plot Matrix for cut, carat in relation to price
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Create a scatter plot matrix
+## Create a scatter plot matrix
 sns.pairplot(df, vars=['carat', 'price'], hue='cut', markers='o', palette='viridis')
 
 plt.show()
