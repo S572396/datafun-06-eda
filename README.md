@@ -78,7 +78,7 @@ print(df.head())
 
 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
 
-## Data Inspection
+## 1.Examing the Data: What is the data size and typ. Data Inspection
 
 '''
 print(df.head(10))
@@ -97,12 +97,12 @@ print(df.dtypes)
 
 
 
-## Statistics Summary
+## 2 Statistics Information Summary
 '''
 print (df.describe())
 
 '''
-## Avg of diamond carat weight
+## 3. Avg of diamond carat weight
 '''
 ## Calculate the average of the 'carat' column
 average_carat = df['carat'].mean()
@@ -123,7 +123,7 @@ plt.show
 '''
 ### markdown answer added in notebook
 
-## how many are 'Ideal' diamonds?
+## 4. how many are 'Ideal' diamonds?
 
 '''
 import seaborn as sns
@@ -146,7 +146,7 @@ print("Number of diamonds labeled 'Ideal':", ideal_count)
 '''
 ### mardown answer added in notebook
 
-## Data Transformation and Feature Engineering
+## 5. Data Transformation and Feature Engineering
 
     1.Rename one column:
     '''
@@ -192,7 +192,7 @@ total_best_value_count = df['best_value'].sum()
 ### markdown insight noted of sucessful creation in notebook
 
 
-## how many meet criteria of 4 C's: cut, color, clairity,and carat?
+## 6.How many meet criteria of 4 C's: cut, color, clairity,and carat?
 '''
  Filter the DataFrame based on the specified conditions
 
@@ -204,7 +204,7 @@ print("Number of diamonds meeting the best values:", count_best_values)
 '''
 ### markdown answer added in notebook
 
-## What is the correlation between diamond quality and price?
+## 7. What is the correlation between diamond quality and price?
 
 '''
 ## Sort the DataFrame by 'price' column in descending order
@@ -213,18 +213,13 @@ sorted_df = df.sort_values(by='price', ascending=False)
 ## Display all rows of the sorted DataFrame
 print(sorted_df)
 
-'''
-### Markdown observation added in notebook
-
-### Price and Carat Scatter Plot created to further compare information
-
+## Scatter Plot Created for Price vs Carat
 '''
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 sorted_df = df.sort_values(by='price', ascending=False)
 
-## Create a scatter plot
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x='carat', y='price', data=sorted_df)
 
@@ -233,16 +228,22 @@ plt.ylabel('Price')
 plt.title('Scatter Plot of Diamonds - Price vs. Carat')
 
 plt.show()
+
 '''
-### markdown findings added in notebook
+### Markdown observation added in notebook
 
-## other factors that affect diamond prices of cut, color, clarity in additon to carat.
+## 8. Other Factors that affect price: cut, color clarity in additon to carat
 
-Scatter Plot Matrix for cut, carat in relation to price
-
+## Scatter Plot Created
 '''
 import seaborn as sns
 import matplotlib.pyplot as plt
+
+sorted_df = df.sort_values(by='price', ascending=False)
+
+
+### markdown findings added in notebook
+
 
 ## Create a scatter plot matrix
 sns.pairplot(df, vars=['carat', 'price'], hue='cut', markers='o', palette='viridis')
@@ -273,4 +274,4 @@ plt.show()
 '''
 ### markdown insights added in
 
-## Conclusion explained in notebook
+## 9.0 Conclusion explained in notebook
